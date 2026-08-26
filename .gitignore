@@ -1,0 +1,14 @@
+# Archivos del sistema
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Temporales de pruebas
+_preview.html
+_responsive-test.html
