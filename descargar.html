@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Descargar el sistema — Monchi Boba Tea</title>
+<meta name="description" content="Descarga el instalador del punto de venta de Monchi Boba Tea para las computadoras de caja de las sucursales.">
+<meta name="theme-color" content="#01499B">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://mariosanchez19.github.io/monchi-boba-tea/descargar.html">
+<link rel="icon" href="img/mascota.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ================= HEADER ================= -->
+<header class="header header--simple" id="header">
+  <div class="header__inner">
+    <a class="header__logo" href="index.html" aria-label="Monchi Boba Tea — Inicio">
+      <img src="img/logo-blanco.webp" alt="Monchi Boba Tea" width="494" height="191">
+    </a>
+    <a class="btn btn--white header__cta" href="index.html">Volver al sitio</a>
+  </div>
+</header>
+
+<!-- ================= DESCARGA ================= -->
+<main class="descarga" id="contenido">
+  <div class="container descarga__inner">
+
+    <p class="descarga__kicker">Uso interno · Sucursales</p>
+    <h1 class="descarga__title">Sistema de<br>punto de venta</h1>
+    <p class="descarga__lead">
+      El programa que corre en la computadora de cada caja: cobra, imprime el
+      ticket, abre el cajón y manda las ventas al panel.
+      Instálalo una sola vez por computadora.
+    </p>
+
+    <!-- Tarjeta de descarga. El botón y los datos de versión los rellena
+         js/descargar.js con la última publicación; lo que está escrito aquí
+         es lo que se ve mientras carga o si la consulta falla. -->
+    <div class="descarga__card" id="tarjeta">
+      <div class="descarga__meta">
+        <p class="descarga__version" id="version">Buscando la última versión…</p>
+        <p class="descarga__detalle" id="detalle">Windows 10 u 11 · 64 bits</p>
+      </div>
+      <a class="btn btn--red descarga__btn" id="btnDescargar"
+         href="https://github.com/mariosanchez19/monchi-erp-releases/releases/latest">
+        Descargar
+      </a>
+    </div>
+
+    <p class="descarga__auto">
+      Esta página siempre ofrece la última versión publicada: la consulta cada
+      vez que se abre, así que no hay que tocarla cuando sale una nueva.
+      <a href="https://github.com/mariosanchez19/monchi-erp-releases/releases" target="_blank" rel="noopener">Ver todas las versiones</a>
+    </p>
+
+    <p class="descarga__nota" id="nota">
+      Al abrirlo, Windows dirá <strong>«Windows protegió tu PC»</strong>. Es normal:
+      el instalador no está firmado con un certificado de pago. Toca
+      <strong>Más información</strong> y luego <strong>Ejecutar de todas formas</strong>.
+    </p>
+
+    <!-- ---------- Pasos ---------- -->
+    <h2 class="descarga__h2">Qué hacer después de instalarlo</h2>
+    <ol class="pasos">
+      <li class="paso">
+        <h3>Decirle en qué sucursal está</h3>
+        <p>Abre Monchi ERP, elige <strong>Punto de venta</strong> y captura el correo y
+        la contraseña de esa caja. Se hace una sola vez: la computadora ya no
+        vuelve a pedirla, ni aunque la apaguen.</p>
+      </li>
+      <li class="paso">
+        <h3>Conectar la impresora</h3>
+        <p>Por USB y encendida. Entra con una cuenta de gerente a
+        <strong>Configuración → Impresora</strong>, escógela de la lista, pon el ancho
+        del papel (58 u 80 mm) y saca un ticket de prueba.</p>
+      </li>
+      <li class="paso">
+        <h3>Probar una venta</h3>
+        <p>Teclea el PIN de un cajero y cobra un producto. Revisa que salga el
+        ticket, que se abra el cajón si fue en efectivo y que la venta aparezca
+        en el panel desde otra computadora. Luego cancélala desde el panel.</p>
+      </li>
+    </ol>
+
+    <div class="avisos">
+      <p class="aviso">
+        <strong>Se actualiza solo.</strong> Cada caja revisa por su cuenta si hay
+        versión nueva y la instala al cerrar el programa al final del turno. No
+        hay que volver a bajar el instalador por cada cambio: esta página es
+        para computadoras nuevas.
+      </p>
+      <p class="aviso aviso--ojo">
+        <strong>Sin internet la caja no cobra.</strong> El sistema guarda todo en la
+        nube al momento; una venta sin conexión no se registra.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer__legal">
+    <div class="container">
+      <p>© <span id="year"></span> Monchi Boba Tea · <a href="index.html">Volver al sitio</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/descargar.js"></script>
+</body>
+</html>

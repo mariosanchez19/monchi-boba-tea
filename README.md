@@ -8,17 +8,22 @@ compilarse ni instalar nada.
 
 ```
 index.html          Estructura de la página
+descargar.html      Descarga del punto de venta (uso interno de sucursales)
 css/styles.css      Estilos, paleta y comportamiento responsive
 js/main.js          Datos editables (menú, cafés, sucursales) + interacciones
+js/descargar.js     Busca la última versión publicada del punto de venta
 img/                Imágenes optimizadas en WebP  <- esto es lo que se publica
 img-original/       Los mismos archivos en PNG sin comprimir (solo archivo)
+robots.txt          Le dice a Google que no indexe descargar.html
+sitemap.xml         Mapa del sitio
 ```
 
 Los archivos originales (`BANNER SUPERIOR MONCHIS.png`, `imagen 1.png`, etc.)
 se conservan tal cual en la raíz. La carpeta `img/` contiene las versiones
 optimizadas que usa el sitio.
 
-**Para publicar basta con subir:** `index.html`, `css/`, `js/` e `img/`.
+**Para publicar basta con subir:** `index.html`, `descargar.html`, `css/`,
+`js/`, `img/`, `robots.txt` y `sitemap.xml`.
 `img-original/` y los PNG de la raíz son material de trabajo y no hace falta
 subirlos.
 
@@ -106,3 +111,43 @@ búsquedas o perfiles genéricos; cámbialos por las URL definitivas en
   foco visible en todos los elementos interactivos.
 - Las animaciones se desactivan solas si el sistema tiene activado
   "reducir movimiento".
+
+
+## La página de descarga del punto de venta
+
+`descargar.html` es de uso interno: la usa un encargado cuando hay que instalar
+el punto de venta en una computadora nueva. Se llega por un enlace discreto al
+pie del sitio, y lleva `noindex` para que no aparezca en Google.
+
+**No hay que actualizarla nunca.** No tiene la versión escrita adentro: cada vez
+que alguien la abre le pregunta a GitHub cuál es la última publicación de
+`mariosanchez19/monchi-erp-releases` y arma el botón con ese archivo. La cadena
+completa es:
+
+```
+(en cafeterias-erp)  npm run publicar
+        ↓  compila, sube el instalador y crea el release en GitHub
+GitHub Releases: v0.4.0
+        ↓  la página lo ve en la siguiente visita
+descargar.html muestra "Versión 0.4.0" y baja ese .exe
+```
+
+Si GitHub no contesta —sin internet, o se pasó el límite de consultas de la API,
+que son 60 por hora y por conexión— el botón no se rompe: lleva a la lista de
+publicaciones, donde el instalador se baja a mano.
+
+El instalador **no se guarda en este repositorio**: pesa 104 MB, más de lo que
+GitHub acepta por archivo. Vive en Releases, que es también de donde las cajas
+se actualizan solas.
+
+## Publicado en
+
+<https://mariosanchez19.github.io/monchi-boba-tea/>
+
+GitHub Pages sirve lo que esté en la rama `main`. Para actualizar el sitio basta
+con `git push`: en un minuto está arriba.
+
+Si más adelante compran un dominio (`monchibobatea.com`), se conecta desde
+**Settings → Pages → Custom domain** del repositorio, y hay que cambiar la URL
+en `robots.txt`, `sitemap.xml` y las etiquetas `canonical` / `og:url` de
+`index.html` y `descargar.html`.

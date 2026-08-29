@@ -629,3 +629,147 @@ button{ font:inherit; }
   .sucursales__grid{ grid-template-columns:1fr; }
   .hero__title{ font-size:clamp(2.2rem, 12vw, 3.4rem); }
 }
+
+/* =========================================================
+   PÁGINA DE DESCARGA (descargar.html)
+   Uso interno: la usan las sucursales para instalar el punto
+   de venta en una computadora nueva.
+   ========================================================= */
+/* Cabecera sin menú: el único botón se va al extremo derecho, donde en el
+   sitio queda "Ordena ahora". */
+.header--simple .header__cta{ margin-left:auto; display:inline-flex; }
+
+.descarga{
+  padding-top:calc(var(--header-h) + clamp(40px, 6vw, 72px));
+  padding-bottom:clamp(56px, 8vw, 96px);
+  background:var(--hueso);
+  min-height:100vh;
+}
+.descarga__inner{ max-width:760px; }
+
+.descarga__kicker{
+  margin:0 0 10px;
+  font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--azul-claro);
+}
+.descarga__title{
+  font-family:var(--display);
+  color:var(--azul);
+  font-size:clamp(2.1rem, 6vw, 3.6rem);
+  line-height:.98;
+  text-transform:uppercase;
+}
+.descarga__lead{
+  margin:18px 0 0;
+  font-size:clamp(1rem, 2.2vw, 1.1rem);
+  line-height:1.6;
+  max-width:56ch;
+}
+
+/* ---------- Tarjeta de descarga ---------- */
+.descarga__card{
+  margin-top:clamp(28px, 4vw, 40px);
+  background:var(--blanco);
+  border-radius:var(--radio);
+  box-shadow:var(--sombra);
+  padding:clamp(22px, 3.4vw, 30px);
+  display:flex; align-items:center; flex-wrap:wrap; gap:20px;
+}
+.descarga__meta{ flex:1 1 240px; min-width:0; }
+.descarga__version{
+  margin:0;
+  font-family:var(--display);
+  font-size:1.5rem; letter-spacing:.02em; text-transform:uppercase;
+  color:var(--azul);
+}
+.descarga__detalle{ margin:6px 0 0; font-size:.86rem; opacity:.75; }
+.descarga__btn{ flex:0 0 auto; }
+
+/* Cuando no se pudo consultar la versión, el botón lleva a la lista de
+   publicaciones en vez de al archivo: se dice, para que nadie espere que
+   empiece a bajar solo. */
+.descarga__card--manual .descarga__btn::after{
+  content:' en GitHub';
+  font-weight:400; text-transform:none; letter-spacing:.02em;
+}
+
+.descarga__auto{
+  margin:14px 0 0;
+  font-size:.82rem; line-height:1.6; opacity:.72;
+}
+.descarga__auto a{
+  font-weight:700; color:var(--azul);
+  text-decoration:underline; text-underline-offset:3px;
+}
+
+.descarga__nota{
+  margin:18px 0 0;
+  font-size:.9rem; line-height:1.6;
+  background:#FFF8E1;
+  border-left:4px solid #FFC400;
+  border-radius:0 var(--radio-sm) var(--radio-sm) 0;
+  padding:14px 18px;
+}
+.descarga__nota strong{ color:var(--negro); }
+
+/* ---------- Pasos ---------- */
+.descarga__h2{
+  margin:clamp(44px, 6vw, 64px) 0 0;
+  font-family:var(--display);
+  color:var(--azul);
+  font-size:clamp(1.5rem, 3.4vw, 2.1rem);
+  text-transform:uppercase;
+  line-height:1.05;
+}
+.pasos{ counter-reset:paso; margin:24px 0 0; padding:0; list-style:none; }
+.paso{
+  counter-increment:paso;
+  position:relative;
+  padding:0 0 0 58px;
+  margin-top:22px;
+}
+.paso::before{
+  content:counter(paso);
+  position:absolute; left:0; top:0;
+  width:38px; height:38px; border-radius:50%;
+  background:var(--azul); color:var(--blanco);
+  display:grid; place-items:center;
+  font-family:var(--display); font-size:1.15rem;
+}
+.paso h3{
+  font-size:1.02rem; font-weight:700; color:var(--negro);
+  margin:6px 0 4px;
+}
+.paso p{ margin:0; font-size:.94rem; line-height:1.6; }
+
+/* ---------- Avisos ---------- */
+.avisos{ margin-top:clamp(36px, 5vw, 52px); display:grid; gap:14px; }
+.aviso{
+  margin:0;
+  background:var(--blanco);
+  border-radius:var(--radio-sm);
+  padding:16px 20px;
+  font-size:.92rem; line-height:1.6;
+  border-left:4px solid var(--azul-claro);
+}
+.aviso strong{ color:var(--azul); }
+.aviso--ojo{ border-left-color:var(--rojo); }
+.aviso--ojo strong{ color:var(--rojo); }
+
+/* ---------- Enlace discreto en el pie del sitio ---------- */
+.footer__interno{
+  opacity:.62;
+  font-weight:600;
+  text-decoration:underline; text-underline-offset:3px;
+  transition:opacity .2s ease;
+}
+.footer__interno:hover{ opacity:1; }
+.footer__interno-linea{ margin:6px 0 0; }
+
+@media (max-width: 560px){
+  .descarga__card{ flex-direction:column; align-items:stretch; text-align:center; }
+  /* Sin esto el bloque de la versión se estira y deja un hueco enorme
+     entre el texto y el botón. */
+  .descarga__meta{ flex:0 0 auto; }
+  .descarga__btn{ width:100%; }
+}

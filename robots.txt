@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Página de uso interno: no hace falta que salga en las búsquedas.
+Disallow: /descargar.html
+
+Sitemap: https://mariosanchez19.github.io/monchi-boba-tea/sitemap.xml
