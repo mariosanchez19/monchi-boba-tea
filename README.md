@@ -142,12 +142,31 @@ se actualizan solas.
 
 ## Publicado en
 
-<https://mariosanchez19.github.io/monchi-boba-tea/>
+<https://monchibobatea.com>
 
-GitHub Pages sirve lo que esté en la rama `main`. Para actualizar el sitio basta
-con `git push`: en un minuto está arriba.
+El dominio está registrado en **Hostinger**, pero el sitio no vive ahí: los
+servidores de nombres siguen siendo los de Hostinger y sus registros A apuntan a
+**GitHub Pages**, que sirve lo que esté en la rama `main` de este repositorio.
+Para actualizar el sitio basta con `git push`: en un minuto está arriba.
 
-Si más adelante compran un dominio (`monchibobatea.com`), se conecta desde
-**Settings → Pages → Custom domain** del repositorio, y hay que cambiar la URL
-en `robots.txt`, `sitemap.xml` y las etiquetas `canonical` / `og:url` de
-`index.html` y `descargar.html`.
+El archivo `CNAME` de la raíz es lo que le dice a GitHub qué dominio atiende.
+**No hay que borrarlo**: sin él, `monchibobatea.com` deja de resolver al sitio.
+
+### Los registros DNS, por si hay que rehacerlos
+
+En Hostinger → *Dominios → monchibobatea.com → DNS / Nameservers*:
+
+| Tipo | Nombre | Valor | TTL |
+|---|---|---|---|
+| A | `@` | `185.199.108.153` | 300 |
+| A | `@` | `185.199.109.153` | 300 |
+| A | `@` | `185.199.110.153` | 300 |
+| A | `@` | `185.199.111.153` | 300 |
+| CNAME | `www` | `mariosanchez19.github.io.` | 300 |
+
+Los cuatro registros A son de GitHub y son los mismos para todo el mundo; se
+ponen los cuatro para que el sitio siga en pie si uno se cae. GitHub redirige
+solo de `www` al dominio sin www.
+
+El certificado HTTPS lo emite GitHub gratis (Let's Encrypt) y se renueva solo,
+siempre que **Enforce HTTPS** siga activo en *Settings → Pages*.
