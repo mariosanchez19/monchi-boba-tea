@@ -624,10 +624,28 @@ button{ font:inherit; }
 @media (max-width: 520px){
   .cards, .cards--cafe{ grid-template-columns:1fr; }
   .card{ flex-direction:row; text-align:left; }
-  .card__img{ flex:0 0 36%; }
+  .card__img{ flex:0 0 26%; }
   .card__price{ justify-content:flex-start; }
   .sucursales__grid{ grid-template-columns:1fr; }
   .hero__title{ font-size:clamp(2.2rem, 12vw, 3.4rem); }
+
+  /* Las fotos de producto se recortaron de la maqueta y tienen poco detalle
+     real —unos 100 px de ancho—. Un celular pinta 3 píxeles por cada punto
+     de pantalla, así que a 120 px de alto las ampliaba a 360 px reales y se
+     veían borrosas. A 78 px las pinta en 234, que es donde el detalle que sí
+     existe alcanza. Cuando lleguen fotos de verdad, este bloque se quita.
+     Ver README, "Fotos de producto". */
+  .card__img img,
+  .cards--cafe .card__img img{ max-height:78px; }
+
+  /* Con la foto más chica, los 150px de la tarjeta dejaban un hueco vacío
+     alrededor; con esto la manda el texto, como en una carta de menú. */
+  .card, .cards--cafe .card{ min-height:0; padding:14px; }
+
+  /* El espacio que suelta la foto se le da al texto, que sí es nítido. */
+  .card__desc{ font-size:.72rem; margin-bottom:8px; }
+  .card__note{ font-size:.62rem; }
+  .card__name{ font-size:.92rem; }
 }
 
 /* =========================================================

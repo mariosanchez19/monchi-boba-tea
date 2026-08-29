@@ -70,6 +70,39 @@ Las descripciones de las 6 bebidas están marcadas con `// REVISAR` porque en la
 maqueta original ese texto era demasiado pequeño para leerse. Sustitúyelas por
 las descripciones reales del menú.
 
+### Fotos de producto: por qué se ven suaves en el celular
+
+Las fotos de bebidas y cafés miden 300 px de ancho, pero **el detalle real que
+contienen es de unos 100 px**: se recortaron de la maqueta, que mide 533 px de
+ancho en total. Se comprobó reduciéndolas y volviéndolas a ampliar: la diferencia
+es de 0.2-0.4 niveles de gris, contra 3.0-3.5 de `mascota.webp` o `sucursal-1.webp`,
+que sí son fotos de verdad. Es decir, no hay nada que perder porque no hay nada.
+
+Un celular pinta **3 píxeles reales por cada punto de pantalla**. Con la foto a
+120 px de alto, el teléfono la estiraba a 360 px reales y quedaba a la vista toda
+la ampliación. En un monitor el navegador la encoge a 120 px y eso la disimula:
+por eso se veía mal sólo en el celular.
+
+**Mitigación puesta en el CSS** (bloque `@media (max-width: 520px)`): la foto baja
+a 78 px de alto, que el teléfono pinta en 234 px reales, y el espacio que suelta
+se le da al texto de la tarjeta, que sí es nítido a cualquier tamaño.
+
+Se descartaron dos caminos, por si a alguien se le ocurren después:
+
+- **Borrar el número incrustado** para dibujarlo como texto HTML. El número se
+  encima con el vaso entre 20 y 60 px, y reconstruir el borde del vaso detrás
+  deja una franja clara que se nota más que el borrón.
+- **Ampliar con super-resolución** (Real-ESRGAN y parecidos). Esas redes inventan
+  el detalle que falta. Sobre el logo y el texto "MONCHI BOBA TEA" del vaso
+  producirían letras nítidas pero inventadas — en la marca del cliente eso es
+  peor que la foto borrosa.
+
+Lo único que lo arregla de verdad son fotos nuevas. No hace falta fotógrafo:
+cualquier celular actual toma 3000 px o más, doce veces lo necesario. Vaso
+completo, vertical, fondo blanco, buena luz y sin flash. **Si vienen sin el número
+encima, el número se puede poner como texto en la página** y queda nítido siempre.
+Cuando lleguen, se borra la mitigación del CSS.
+
 ### Pendiente: fotos de producto en alta resolución
 
 Las imágenes `img/bebida-*.webp` e `img/cafe-*.webp` se recortaron de la
